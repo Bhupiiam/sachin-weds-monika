@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sachin ❤️ Monika — Our Wedding</title>
+  <title data-lang-key="pageTitle">Sachin ❤️ Monika — Our Wedding</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,6 +121,23 @@
     .nav-links a.active {
       color: var(--c-primary);
     }
+    
+    .lang-btn {
+      background: var(--c-primary);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-size: 0.9rem;
+      margin-left: 24px;
+    }
+    .lang-btn:hover {
+      background-color: #6e0202;
+    }
 
     /* --- Hero Section --- */
     .hero {
@@ -131,10 +148,7 @@
       justify-content: center;
       text-align: center;
       color: white;
-      
-      /* Background photo of the couple */
       background: linear-gradient(45deg, rgba(138, 3, 3, 0.5), rgba(212, 175, 55, 0.3)), url('https://images.pexels.com/photos/169192/pexels-photo-169192.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
-      
       position: relative;
       padding: 0 20px;
       overflow: hidden;
@@ -289,6 +303,7 @@
         font-size: 1.8rem;
         color: var(--c-primary);
         margin-top: 40px;
+        line-height: 1.5;
     }
     
     .decorator {
@@ -335,25 +350,23 @@
       transform: scale(1);
     }
     
-    /* === UPDATED: Individual event images === */
-.visual-panel[data-visual="sangeet"] {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ladiessangeet.jpg') center center/cover;
-}
+    .visual-panel[data-visual="sangeet"] {
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ladiessangeet.jpg') center center/cover;
+    }
 
-.visual-panel[data-visual="ghurchadi"] {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ghodichadhi.jpg') center center/cover;
-}
+    .visual-panel[data-visual="ghurchadi"] {
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ghodichadhi.jpg') center center/cover;
+    }
 
-.visual-panel[data-visual="wedding"] {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('havan.jpg') center center/cover;
-}
+    .visual-panel[data-visual="wedding"] {
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('havan.jpg') center center/cover;
+    }
 
     .events-scroll-content {
       flex: 1;
       padding: 0 5%;
     }
 
-    /* === UPDATED: Added border and transition === */
     .event-step {
       min-height: 80vh; /* This spacing drives the scrolling */
       padding: 30px;
@@ -362,19 +375,14 @@
       flex-direction: column;
       justify-content: center;
       border-radius: var(--radius);
-      
-      /* Add transparent border by default */
       border-left: 4px solid transparent; 
-      
-      /* Add border-color to the transition */
       transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
     }
     
-    /* === UPDATED: Animate border-color instead of just background === */
     .event-step.is-active-step {
       background-color: #fff;
       box-shadow: var(--shadow);
-      border-left-color: var(--c-primary); /* Animate to maroon */
+      border-left-color: var(--c-primary);
     }
 
     .event-step h3 {
@@ -552,57 +560,45 @@
       .hero-date {
         font-size: 1.5rem;
       }
-      
       .main-countdown {
         gap: 10px;
       }
-      
       .main-countdown-item {
         min-width: 90px;
         padding: 15px 10px;
       }
-      
       .main-countdown-item span {
         font-size: 2.2rem;
       }
-      
-      /* Stack the scrolly-telling section on mobile */
       .events-scrolly {
         flex-direction: column;
       }
-      
       .events-sticky-visuals {
         position: relative;
         top: 0;
-        height: 50vh; /* Give it a fixed height */
+        height: 50vh;
         width: 100%;
         margin-bottom: 40px;
       }
-      
       .visual-panel {
         width: 95%;
         height: 95%;
       }
-      
       .events-scroll-content {
         padding: 0;
       }
-      
       .event-step {
-        min-height: auto; /* Remove min-height */
-        margin-bottom: 40px; /* Just space them out normally */
+        min-height: auto;
+        margin-bottom: 40px;
         padding: 25px;
         background: #fff;
         border-radius: var(--radius);
         box-shadow: var(--shadow);
-        border-left: 4px solid var(--c-primary); /* Keep border on mobile */
+        border-left: 4px solid var(--c-primary);
       }
-      
-      /* On mobile, we lose the scrolly-telling, so we don't need this class */
       .event-step.is-active-step {
           border-left-color: var(--c-primary);
       }
-      
       .venue-rsvp-grid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -611,7 +607,13 @@
     
     @media (max-width: 600px) {
       .nav-links {
-        display: none; /* Simplification: hide nav links on small screens */
+        display: none;
+      }
+      .nav-content {
+        justify-content: space-between;
+      }
+      .lang-btn {
+        margin-left: 10px;
       }
       .hero h1 {
         font-size: 3.5rem;
@@ -619,50 +621,40 @@
       .section-title {
         font-size: 2.5rem;
       }
-      
       .main-countdown {
         gap: 8px;
       }
-      
       .main-countdown-item {
         min-width: 75px;
         padding: 12px 8px;
       }
-      
       .main-countdown-item span {
         font-size: 1.8rem;
       }
-      
       .main-countdown-item div {
         font-size: 0.7rem;
       }
     }
-.event-step.is-active-step {
-  
-  /* 1. Use the creamy background color from the body */
-  background-color: var(--c-bg);
-  
-  /* 2. Keep the original outer shadow, but add a NEW
-         inset (internal) glow using the gold accent color.
-         This is what creates the effect. */
-  box-shadow: var(--shadow), /* This is the original shadow */
-              inset 0 0 60px rgba(212, 175, 55, 0.2); /* This is the new glow */
-  
-  /* This border is still applied from the previous rule */
-  border-left-color: var(--c-primary); 
-}
+    
+    .event-step.is-active-step {
+      background-color: var(--c-bg);
+      box-shadow: var(--shadow),
+                  inset 0 0 60px rgba(212, 175, 55, 0.2); 
+      border-left-color: var(--c-primary); 
+    }
   </style>
 </head>
-<body>
+<body data-lang="en">
 
   <nav class="nav" id="navbar">
     <div class="nav-content">
       <a href="#hero" class="nav-logo">S & M</a>
       <div class="nav-links">
-        <a href="#story" class="nav-link">Our Story</a>
-        <a href="#events" class="nav-link">Events</a>
-        <a href="#rsvp" class="nav-link">Venue & RSVP</a>
+        <a href="#story" class="nav-link" data-lang-key="navStory">Our Story</a>
+        <a href="#events" class="nav-link" data-lang-key="navEvents">Events</a>
+        <a href="#rsvp" class="nav-link" data-lang-key="navRSVP">Venue & RSVP</a>
       </div>
+      <button id="lang-toggle" class="lang-btn">हिन्दी</button>
     </div>
   </nav>
 
@@ -670,46 +662,46 @@
 
     <section class="hero" id="hero">
       <div class="hero-content">
-        <div class="hero-eyebrow">WE'RE GETTING MARRIED</div>
-        <h1>Sachin & Monika</h1>
-        <div class="hero-date">November 27, 2025</div>
+        <div class="hero-eyebrow" data-lang-key="heroEyebrow">WE'RE GETTING MARRIED</div>
+        <h1 data-lang-key="heroNames">Sachin & Monika</h1>
+        <div class="hero-date" data-lang-key="heroDate">November 27, 2025</div>
         
         <div class="main-countdown" id="main-countdown">
           <div class="main-countdown-item">
             <span id="main-days">00</span>
-            <div>Days</div>
+            <div data-lang-key="cdDays">Days</div>
           </div>
           <div class="main-countdown-item">
             <span id="main-hours">00</span>
-            <div>Hours</div>
+            <div data-lang-key="cdHours">Hours</div>
           </div>
           <div class="main-countdown-item">
             <span id="main-minutes">00</span>
-            <div>Minutes</div>
+            <div data-lang-key="cdMinutes">Minutes</div>
           </div>
           <div class="main-countdown-item">
             <span id="main-seconds">00</span>
-            <div>Seconds</div>
+            <div data-lang-key="cdSeconds">Seconds</div>
           </div>
         </div>
       </div>
-      <a href="#story" class="scroll-down">scroll down</a>
+      <a href="#story" class="scroll-down" data-lang-key="scrollDown">scroll down</a>
     </section>
 
     <section class="section" id="story">
       <div class="container">
-        <h2 class="section-title">Our Story</h2>
+        <h2 class="section-title" data-lang-key="storyTitle">Our Story</h2>
         <div class="story-content">
           <h3 class="sanskrit-quote">
             वक्रतुण्ड महाकाय सूर्यकोटी समप्रभः!<br>
             निर्विघ्नं कुरु मे देव सर्व कार्येषु सर्वदा॥
           </h3>
-          <p>With the blessings of our families, we joyfully invite you to celebrate our wedding. Your presence would be the most perfect blessing as we begin our new life together.</p>
+          <p data-lang-key="storyInvite">With the blessings of our families, we joyfully invite you to celebrate our wedding. Your presence would be the most perfect blessing as we begin our new life together.</p>
           <div class="decorator"></div>
           <div class="story-names">
-            Sachin (Indian Air Force)<br>
-            &<br>
-            Monika (Data Scientist)
+            <span data-lang-key="storyName1">Sachin (Indian Air Force)</span><br>
+            <span data-lang-key="and">&</span><br>
+            <span data-lang-key="storyName2">Monika (Data Scientist)</span>
           </div>
         </div>
       </div>
@@ -729,56 +721,59 @@
       <div class="events-scroll-content">
         
         <div style="text-align: center; margin-bottom: 40px;">
-            <h2 class="section-title">Wedding Events</h2>
-            <p class="section-subtitle">Join us for the celebrations</p>
+            <h2 class="section-title" data-lang-key="eventsTitle">Wedding Events</h2>
+            <p class="section-subtitle" data-lang-key="eventsSubtitle">Join us for the celebrations</p>
         </div>
 
         <div class="event-step" data-event="sangeet">
-          <h3>Ladies Sangeet</h3>
-          <div class="date">Wednesday, 26th Nov 2025 • 7:00 PM Onwards</div>
-          <p>A night of music, dance, and joy to kick off the celebrations.</p>
+          <h3 data-lang-key="sangeetTitle">Ladies Sangeet</h3>
+          <div class="date" data-lang-key="sangeetDate">Wednesday, 26th Nov 2025 • 7:00 PM Onwards</div>
+          <p data-lang-key="sangeetDesc">A night of music, dance, and joy to kick off the celebrations.</p>
           <div class="venue">
-            <strong>Venue:</strong> Hotel Star Wing, New Hansi Road, Jind
+            <strong data-lang-key="venue">Venue:</strong>
+            <span data-lang-key="venueAddress1">Hotel Star Wing, New Hansi Road, Jind</span>
           </div>
           <div class="event-countdown" id="countdown-sangeet">
-            <div class="countdown-item"><span id="days-sangeet">00</span><div>Days</div></div>
-            <div class="countdown-item"><span id="hours-sangeet">00</span><div>Hours</div></div>
-            <div class="countdown-item"><span id="minutes-sangeet">00</span><div>Min</div></div>
-            <div class="countdown-item"><span id="seconds-sangeet">00</span><div>Sec</div></div>
+            <div class="countdown-item"><span id="days-sangeet">00</span><div data-lang-key="cdDays">Days</div></div>
+            <div class="countdown-item"><span id="hours-sangeet">00</span><div data-lang-key="cdHours">Hours</div></div>
+            <div class="countdown-item"><span id="minutes-sangeet">00</span><div data-lang-key="cdMin">Min</div></div>
+            <div class="countdown-item"><span id="seconds-sangeet">00</span><div data-lang-key="cdSec">Sec</div></div>
           </div>
         </div>
 
         <div class="event-step" data-event="ghurchadi">
-          <h3>Ghurchadi & Baraat</h3>
-          <div class="date">Thursday, 27th Nov 2025 • 4:00 PM Onwards</div>
-          <p>
+          <h3 data-lang-key="ghurchadiTitle">Ghurchadi & Baraat</h3>
+          <div class="date" data-lang-key="ghurchadiDate">Thursday, 27th Nov 2025 • 4:00 PM Onwards</div>
+          <p data-lang-key="ghurchadiDesc">
             The <strong>Ghurchadi</strong> ceremony will take place at our residence, followed by the departure of the <strong>Baraat</strong> (Wedding Procession) at 6:00 PM.
           </p>
           <div class="venue">
-            <strong>Venue:</strong> Vill. Jalalpur Kalan, Jind
+            <strong data-lang-key="venue">Venue:</strong>
+            <span data-lang-key="venueAddress2">Vill. Jalalpur Kalan, Jind</span>
           </div>
           <div class="event-countdown" id="countdown-ghurchadi">
-            <div class="countdown-item"><span id="days-ghurchadi">00</span><div>Days</div></div>
-            <div class="countdown-item"><span id="hours-ghurchadi">00</span><div>Hours</div></div>
-            <div class="countdown-item"><span id="minutes-ghurchadi">00</span><div>Min</div></div>
-            <div class="countdown-item"><span id="seconds-ghurchadi">00</span><div>Sec</div></div>
+            <div class="countdown-item"><span id="days-ghurchadi">00</span><div data-lang-key="cdDays">Days</div></div>
+            <div class="countdown-item"><span id="hours-ghurchadi">00</span><div data-lang-key="cdHours">Hours</div></div>
+            <div class="countdown-item"><span id="minutes-ghurchadi">00</span><div data-lang-key="cdMin">Min</div></div>
+            <div class="countdown-item"><span id="seconds-ghurchadi">00</span><div data-lang-key="cdSec">Sec</div></div>
           </div>
         </div>
 
         <div class="event-step" data-event="wedding">
-          <h3>Wedding Ceremony & Dinner</h3>
-          <div class="date">Thursday, 27th Nov 2025 • 7:00 PM Onwards</div>
-          <p>
+          <h3 data-lang-key="weddingTitle">Wedding Ceremony & Dinner</h3>
+          <div class="date" data-lang-key="weddingDateText">Thursday, 27th Nov 2025 • 7:00 PM Onwards</div>
+          <p data-lang-key="weddingDesc">
             The main wedding ceremony, followed by a celebratory dinner. We eagerly await your presence and blessings.
           </p>
           <div class="venue">
-            <strong>Venue:</strong> Hotel Star Wing, New Hansi Road, Jind
+            <strong data-lang-key="venue">Venue:</strong>
+            <span data-lang-key="venueAddress1">Hotel Star Wing, New Hansi Road, Jind</span>
           </div>
           <div class="event-countdown" id="countdown-wedding">
-            <div class="countdown-item"><span id="days-wedding">00</span><div>Days</div></div>
-            <div class="countdown-item"><span id="hours-wedding">00</span><div>Hours</div></div>
-            <div class="countdown-item"><span id="minutes-wedding">00</span><div>Min</div></div>
-            <div class="countdown-item"><span id="seconds-wedding">00</span><div>Sec</div></div>
+            <div class="countdown-item"><span id="days-wedding">00</span><div data-lang-key="cdDays">Days</div></div>
+            <div class="countdown-item"><span id="hours-wedding">00</span><div data-lang-key="cdHours">Hours</div></div>
+            <div class="countdown-item"><span id="minutes-wedding">00</span><div data-lang-key="cdMin">Min</div></div>
+            <div class="countdown-item"><span id="seconds-wedding">00</span><div data-lang-key="cdSec">Sec</div></div>
           </div>
         </div>
 
@@ -787,8 +782,8 @@
     
     <section class="section" id="rsvp">
         <div class="container">
-            <h2 class="section-title">Venue & RSVP</h2>
-            <p class="section-subtitle">We would be delighted to have you with us.</p>
+            <h2 class="section-title" data-lang-key="rsvpTitle">Venue & RSVP</h2>
+            <p class="section-subtitle" data-lang-key="rsvpSubtitle">We would be delighted to have you with us.</p>
             
             <div class="venue-rsvp-grid">
                 <div class="venue-map">
@@ -800,15 +795,15 @@
                 </div>
                 
                 <div class="rsvp-details">
-                    <h3>Hotel Star Wing</h3>
-                    <p>Near Saraswati School & Rathi Petrol Pump, New Hansi Road, Jind</p>
+                    <h3 data-lang-key="venueName">Hotel Star Wing</h3>
+                    <p data-lang-key="venueAddressFull">Near Saraswati School & Rathi Petrol Pump, New Hansi Road, Jind</p>
                     
                     <div class="contact-card">
-                        <p>Your presence is our gift! Please let us know if you'll be able to join the celebration.</p>
-                        <a href="#rsvp" class="btn" style="margin-bottom: 20px;">RSVP Now</a>
-                        <strong>With regards from the Jaglan Family</strong>
+                        <p data-lang-key="rsvpNote">Your presence is our gift! Please let us know if you'll be able to join the celebration.</p>
+                        <a href="#rsvp" class="btn" style="margin-bottom: 20px;" data-lang-key="rsvpButton">RSVP Now</a>
+                        <strong data-lang-key="rsvpRegards">With regards from the Jaglan Family</strong>
                         <hr style="border:0; border-top: 1px solid #eee; margin: 15px 0;">
-                        <strong>Contact (Ashok Jaglan / Jagdish Jaglan):</strong>
+                        <strong><span data-lang-key="contact">Contact</span> (Ashok Jaglan / Jagdish Jaglan):</strong>
                         <ul style="list-style: none; margin-top: 10px;">
                             <li><a href="tel:+919416272945">📞 94162 72945</a></li>
                             <li><a href="tel:+918168085950">📞 81680 85950</a></li>
@@ -824,14 +819,152 @@
 
   <footer>
     <div class="container">
-      <div class="footer-names">Sachin & Monika</div>
-      <p style="color: var(--c-secondary); margin-top: 10px;">November 27, 2025 • Jind</p>
-      <p style="margin-top: 20px; font-size: 0.9rem;">With blessings from Smt. Roshni Devi & the Jaglan Family</p>
+      <div class="footer-names" data-lang-key="footerNames">Sachin & Monika</div>
+      <p style="color: var(--c-secondary); margin-top: 10px;" data-lang-key="footerDate">November 27, 2025 • Jind</p>
+      <p style="margin-top: 20px; font-size: 0.9rem;" data-lang-key="footerBlessings">With blessings from Smt. Roshni Devi & the Jaglan Family</p>
     </div>
   </footer>
 
   <script>
+    // === UPDATED: Full Translation Dictionary ===
+    const translations = {
+      "en": {
+        "pageTitle": "Sachin ❤️ Monika — Our Wedding",
+        "heroNames": "Sachin & Monika",
+        "and": "&",
+        "footerNames": "Sachin & Monika",
+        "navStory": "Our Story",
+        "navEvents": "Events",
+        "navRSVP": "Venue & RSVP",
+        "heroEyebrow": "WE'RE GETTING MARRIED",
+        "heroDate": "November 27, 2025",
+        "cdDays": "Days",
+        "cdHours": "Hours",
+        "cdMinutes": "Minutes",
+        "cdSeconds": "Seconds",
+        "cdMin": "Min",
+        "cdSec": "Sec",
+        "scrollDown": "scroll down",
+        "storyTitle": "Our Story",
+        "storyInvite": "With the blessings of our families, we joyfully invite you to celebrate our wedding. Your presence would be the most perfect blessing as we begin our new life together.",
+        "storyName1": "Sachin (Indian Air Force)",
+        "storyName2": "Monika (Data Scientist)",
+        "eventsTitle": "Wedding Events",
+        "eventsSubtitle": "Join us for the celebrations",
+        "sangeetTitle": "Ladies Sangeet",
+        "sangeetDate": "Wednesday, 26th Nov 2025 • 7:00 PM Onwards",
+        "sangeetDesc": "A night of music, dance, and joy to kick off the celebrations.",
+        "venue": "Venue:",
+        "venueAddress1": "Hotel Star Wing, New Hansi Road, Jind",
+        "ghurchadiTitle": "Ghurchadi & Baraat",
+        "ghurchadiDate": "Thursday, 27th Nov 2025 • 4:00 PM Onwards",
+        "ghurchadiDesc": "The <strong>Ghurchadi</strong> ceremony will take place at our residence, followed by the departure of the <strong>Baraat</strong> (Wedding Procession) at 6:00 PM.",
+        "venueAddress2": "Vill. Jalalpur Kalan, Jind",
+        "weddingTitle": "Wedding Ceremony & Dinner",
+        "weddingDateText": "Thursday, 27th Nov 2025 • 7:00 PM Onwards",
+        "weddingDesc": "The main wedding ceremony, followed by a celebratory dinner. We eagerly await your presence and blessings.",
+        "rsvpTitle": "Venue & RSVP",
+        "rsvpSubtitle": "We would be delighted to have you with us.",
+        "venueName": "Hotel Star Wing",
+        "venueAddressFull": "Near Saraswati School & Rathi Petrol Pump, New Hansi Road, Jind",
+        "rsvpNote": "Your presence is our gift! Please let us know if you'll be able to join the celebration.",
+        "rsvpButton": "RSVP Now",
+        "rsvpRegards": "With regards from the Jaglan Family",
+        "contact": "Contact",
+        "footerDate": "November 27, 2025 • Jind",
+        "footerBlessings": "With blessings from Smt. Roshni Devi & the Jaglan Family",
+        "countdownDoneMain": "The Wedding Has Begun!",
+        "countdownDoneEvent": "This event has started!"
+      },
+      "hi": {
+        "pageTitle": "सचिन ❤️ मोनिका — हमारी शादी",
+        "heroNames": "सचिन और मोनिका",
+        "and": "और",
+        "footerNames": "सचिन और मोनिका",
+        "navStory": "हमारी कहानी",
+        "navEvents": "कार्यक्रम",
+        "navRSVP": "स्थान और RSVP",
+        "heroEyebrow": "हम शादी कर रहे हैं",
+        "heroDate": "नवंबर २७, २०२५",
+        "cdDays": "दिन",
+        "cdHours": "घंटे",
+        "cdMinutes": "मिनट",
+        "cdSeconds": "सेकंड",
+        "cdMin": "मिनट",
+        "cdSec": "सेकंड",
+        "scrollDown": "नीचे स्क्रॉल करें",
+        "storyTitle": "हमारी कहानी",
+        "storyInvite": "हमारे परिवारों के आशीर्वाद से, हम आपको हमारी शादी का जश्न मनाने के लिए खुशी से आमंत्रित करते हैं। जब हम एक साथ अपना नया जीवन शुरू कर रहे हैं, तो आपकी उपस्थिति सबसे बड़ा आशीर्वाद होगी।",
+        "storyName1": "सचिन (भारतीय वायु सेना)",
+        "storyName2": "मोनिका (डेटा साइंटिस्ट)",
+        "eventsTitle": "शादी के कार्यक्रम",
+        "eventsSubtitle": "हमारे जश्न में शामिल हों",
+        "sangeetTitle": "महिला संगीत",
+        "sangeetDate": "बुधवार, २६ नवंबर २०२५ • शाम ७:०० बजे से",
+        "sangeetDesc": "संगीत, नृत्य और आनंद की एक रात के साथ उत्सव की शुरुआत।",
+        "venue": "स्थान:",
+        "venueAddress1": "होटल स्टार विंग, न्यू हांसी रोड, जींद",
+        "ghurchadiTitle": "घुड़चढ़ी और बारात",
+        "ghurchadiDate": "गुरुवार, २७ नवंबर २०२५ • शाम ४:०० बजे से",
+        "ghurchadiDesc": "<strong>घुड़चढ़ी</strong> समारोह हमारे निवास पर होगा, जिसके बाद शाम 6:00 बजे <strong>बारात</strong> (शादी का जुलूस) प्रस्थान करेगी।",
+        "venueAddress2": "गाँव जलालपुर कलां, जींद",
+        "weddingTitle": "विवाह समारोह और रात्रिभोज",
+        "weddingDateText": "गुरुवार, २७ नवंबर २०२५ • शाम ७:०० बजे से",
+        "weddingDesc": "मुख्य विवाह समारोह, और उसके बाद एक जश्न का रात्रिभोज। हम आपकी उपस्थिति और आशीर्वाद का बेसब्री से इंतजार कर रहे हैं।",
+        "rsvpTitle": "स्थान और RSVP",
+        "rsvpSubtitle": "हमें आपको अपने साथ पाकर खुशी होगी।",
+        "venueName": "होटल स्टार विंग",
+        "venueAddressFull": "सरस्वती स्कूल और राठी पेट्रोल पंप के पास, न्यू हांसी रोड, जींद",
+        "rsvpNote": "आपकी उपस्थिति ही हमारा उपहार है! कृपया हमें बताएं कि क्या आप जश्न में शामिल हो पाएंगे।",
+        "rsvpButton": "अभी RSVP करें",
+        "rsvpRegards": "जगलाण परिवार की ओर से सस्नेह",
+        "contact": "संपर्क",
+        "footerDate": "नवंबर २७, २०२५ • जींद",
+        "footerBlessings": "श्रीमती रोशनी देवी और जगलाण परिवार के आशीर्वाद से",
+        "countdownDoneMain": "शादी शुरू हो गई है!",
+        "countdownDoneEvent": "यह कार्यक्रम शुरू हो गया है!"
+      }
+    };
+    
     document.addEventListener('DOMContentLoaded', () => {
+      
+      // === Language Toggle Logic ===
+      const langToggleButton = document.getElementById('lang-toggle');
+      
+      function updateText(lang) {
+        document.body.dataset.lang = lang; 
+        const elements = document.querySelectorAll('[data-lang-key]');
+        
+        // UPDATED: This function now handles the <title> tag
+        elements.forEach(el => {
+          const key = el.dataset.langKey;
+          const translation = translations[lang][key];
+          
+          if (translation) {
+            // SPECIAL CASE: For the <title> tag in the <head>
+            if (el.tagName === 'TITLE') {
+              document.title = translation;
+            }
+            // Special case for Ghurchadi to preserve <strong> tags
+            else if (key === 'ghurchadiDesc') {
+              el.innerHTML = translation;
+            } 
+            // Default case
+            else {
+              el.innerText = translation;
+            }
+          }
+        });
+        
+        langToggleButton.innerText = lang === 'en' ? 'हिन्दी' : 'English';
+      }
+      
+      langToggleButton.addEventListener('click', () => {
+        const currentLang = document.body.dataset.lang;
+        const newLang = currentLang === 'en' ? 'hi' : 'en';
+        updateText(newLang);
+      });
+      
       
       // --- Main Countdown Timer ---
       function initializeMainCountdown() {
@@ -849,7 +982,9 @@
           
           if (distance < 0) {
             clearInterval(timer);
-            document.getElementById('main-countdown').innerHTML = "<div style='font-size: 2rem; color: var(--c-secondary); font-family: var(--font-heading);'>The Wedding Has Begun!</div>";
+            const lang = document.body.dataset.lang || 'en';
+            const doneText = translations[lang].countdownDoneMain;
+            document.getElementById('main-countdown').innerHTML = `<div style='font-size: 2rem; color: var(--c-secondary); font-family: var(--font-heading);'>${doneText}</div>`;
             return;
           }
           
@@ -883,7 +1018,9 @@
 
           if (distance < 0) {
             clearInterval(timer);
-            countdownContainer.innerHTML = "<div style='font-size: 1.1rem; color: var(--c-primary); font-family: var(--font-heading);'>This event has started!</div>";
+            const lang = document.body.dataset.lang || 'en';
+            const doneText = translations[lang].countdownDoneEvent;
+            countdownContainer.innerHTML = `<div style='font-size: 1.1rem; color: var(--c-primary); font-family: var(--font-heading);'>${doneText}</div>`;
             return;
           }
 
@@ -904,9 +1041,7 @@
         const eventSteps = document.querySelectorAll('.event-step');
         const visualPanels = document.querySelectorAll('.visual-panel');
         
-        // Stop scrolly-telling on smaller screens (where layout stacks)
         if (window.innerWidth <= 900) {
-            // On mobile, just make all visuals and steps visible
             visualPanels.forEach(panel => panel.classList.add('active'));
             eventSteps.forEach(step => step.classList.add('is-active-step'));
             return;
@@ -918,11 +1053,8 @@
             const activePanel = document.querySelector(`.visual-panel[data-visual="${eventType}"]`);
 
             if (entry.isIntersecting) {
-              // Highlight visual
               visualPanels.forEach(panel => panel.classList.remove('active'));
               if (activePanel) activePanel.classList.add('active');
-              
-              // Highlight text content
               eventSteps.forEach(step => step.classList.remove('is-active-step'));
               entry.target.classList.add('is-active-step');
             }
