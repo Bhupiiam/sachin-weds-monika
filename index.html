@@ -316,11 +316,19 @@
 
     /* --- Scrolly-Telling Events Section --- */
     .events-scrolly {
-      display: flex;
-      position: relative;
-      min-height: 100vh;
-      padding: 100px 0;
-    }
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  /* This removes the top padding we no longer need */
+  padding: 0 0 100px 0;
+}
+
+/* This is your ORIGINAL desktop style, which we must keep */
+.event-step.is-active-step {
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  border-left-color: var(--c-primary);
+}
 
     .events-sticky-visuals {
       flex: 1;
@@ -333,22 +341,31 @@
     }
 
     .visual-panel {
-      position: absolute;
-      width: 85%;
-      height: 85%;
-      border-radius: var(--radius);
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 0.8s ease, transform 0.8s ease;
-      box-shadow: var(--shadow);
-      transform: scale(0.95);
-    }
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border-radius: var(--radius);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  box-shadow: var(--shadow);
+  transform: scale(0.95);
+  
+  /* --- THIS IS THE UPDATE --- */
+  /* Added 'filter' to the transition so it animates smoothly */
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+  /* --- END UPDATE --- */
+}
     
-    .visual-panel.active {
-      opacity: 1;
-      transform: scale(1);
-    }
+   .visual-panel.active {
+  opacity: 1;
+  transform: scale(1);
+  
+  /* --- THIS IS THE UPDATE --- */
+  /* This blurs the image as it becomes active */
+  filter: none;
+  /* --- END UPDATE --- */
+}
     
     .visual-panel[data-visual="sangeet"] {
         background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('ladiessangeet.jpg') center center/cover;
@@ -379,11 +396,6 @@
       transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
     }
     
-    .event-step.is-active-step {
-      background-color: #fff;
-      box-shadow: var(--shadow);
-      border-left-color: var(--c-primary);
-    }
 
     .event-step h3 {
       font-size: 2.8rem;
@@ -553,88 +565,148 @@
 
 
     /* --- Responsive Design --- */
-    @media (max-width: 900px) {
-      .hero h1 {
-        font-size: 4.5rem;
-      }
-      .hero-date {
-        font-size: 1.5rem;
-      }
-      .main-countdown {
-        gap: 10px;
-      }
-      .main-countdown-item {
-        min-width: 90px;
-        padding: 15px 10px;
-      }
-      .main-countdown-item span {
-        font-size: 2.2rem;
-      }
-      .events-scrolly {
-        flex-direction: column;
-      }
-      .events-sticky-visuals {
-        position: relative;
-        top: 0;
-        height: 50vh;
-        width: 100%;
-        margin-bottom: 40px;
-      }
-      .visual-panel {
-        width: 95%;
-        height: 95%;
-      }
-      .events-scroll-content {
-        padding: 0;
-      }
-      .event-step {
-        min-height: auto;
-        margin-bottom: 40px;
-        padding: 25px;
-        background: #fff;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        border-left: 4px solid var(--c-primary);
-      }
-      .event-step.is-active-step {
-          border-left-color: var(--c-primary);
-      }
-      .venue-rsvp-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
-    
-    @media (max-width: 600px) {
-      .nav-links {
-        display: none;
-      }
-      .nav-content {
-        justify-content: space-between;
-      }
-      .lang-btn {
-        margin-left: 10px;
-      }
-      .hero h1 {
-        font-size: 3.5rem;
-      }
-      .section-title {
-        font-size: 2.5rem;
-      }
-      .main-countdown {
-        gap: 8px;
-      }
-      .main-countdown-item {
-        min-width: 75px;
-        padding: 12px 8px;
-      }
-      .main-countdown-item span {
-        font-size: 1.8rem;
-      }
-      .main-countdown-item div {
-        font-size: 0.7rem;
-      }
-    }
+   /* === START: CORRECTED RESPONSIVE CSS === */
+/* Replace your old @media queries with this block */
+
+/* === START: CORRECTED RESPONSIVE CSS === */
+/* Replace your old @media queries with this block */
+
+/* === START: NEW RESPONSIVE CSS (Overlay Scrolly-telling) === */
+/* Replace your old @media queries with this block */
+
+/* === START: NEW RESPONSIVE CSS (Fade-in-Place Scrolly-telling) === */
+/* Replace ALL your old @media queries with this block */
+
+/* === START: RESPONSIVE CSS (Fade-in-Place) === */
+
+@media (max-width: 900px) {
+
+  .events-scrolly {
+    display: block;
+    position: relative;
+    padding: 0;
+  }
+
+  .events-sticky-visuals {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    border-radius: 0;
+    overflow: hidden;
+    transition: filter 0.6s ease;
+  }
+
+  /* Active blur applied only when text card is visible */
+  .events-sticky-visuals.is-blurred {
+    filter: blur(6px);
+  }
+
+  .visual-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 0.8s ease, transform 1s ease;
+    filter: none; /* images are never permanently blurred */
+  }
+
+  .visual-panel.active {
+    opacity: 1;
+    transform: scale(1);
+    filter: none;
+  }
+
+  .events-scroll-content {
+    position: relative;
+    z-index: 2;
+    margin-top: 0;
+  }
+
+  .event-step {
+    height: 100vh;
+    margin: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .event-step.is-active-step {
+    opacity: 1;
+    transform: translateY(0);
+    background: rgba(255, 251, 245, 0.9);
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--c-primary);
+    border-radius: var(--radius);
+    margin: 0 10px;
+  }
+}
+
+
+/* --- Smallest Screens --- */
+@media (max-width: 600px) {
+  /* --- Navigation Fix --- */
+  .nav-content {
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 10px;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+  .nav-links a {
+    margin-left: 0;
+  }
+
+  /* --- Hero & Fonts --- */
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  /* --- Main Countdown --- */
+  .main-countdown {
+    gap: 8px;
+  }
+  .main-countdown-item {
+    min-width: 75px;
+    padding: 12px 8px;
+  }
+  .main-countdown-item span {
+    font-size: 1.8rem;
+  }
+  .main-countdown-item div {
+    font-size: 0.7rem;
+  }
+  
+  /* --- Adjust Scrolly-Telling for small screens --- */
+  .event-step.is-active-step {
+    margin: 0 5px; /* Make card margins a bit smaller */
+  }
+}
+
+/* === END: RESPONSIVE CSS === */
+/* === END: NEW RESPONSIVE CSS === */
+
+/* === END: NEW RESPONSIVE CSS === */
     
     .event-step.is-active-step {
       background-color: var(--c-bg);
@@ -642,6 +714,50 @@
                   inset 0 0 60px rgba(212, 175, 55, 0.2); 
       border-left-color: var(--c-primary); 
     }
+    /* === FIX: Venue & RSVP layout on all screens === */
+.venue-rsvp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.venue-map iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 0;
+}
+
+/* Responsive stacking fix */
+@media (max-width: 900px) {
+  .venue-rsvp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .venue-map,
+  .rsvp-details {
+    width: 100%;
+  }
+
+  .rsvp-details {
+    text-align: center;
+  }
+
+  .contact-card {
+    margin: 0 auto;
+    max-width: 500px;
+    text-align: left;
+  }
+
+  .contact-card ul {
+    padding-left: 0;
+  }
+}
+
   </style>
 </head>
 <body data-lang="en">
@@ -731,7 +847,14 @@
           <p data-lang-key="sangeetDesc">A night of music, dance, and joy to kick off the celebrations.</p>
           <div class="venue">
             <strong data-lang-key="venue">Venue:</strong>
-            <span data-lang-key="venueAddress1">Hotel Star Wing, New Hansi Road, Jind</span>
+            <span data-lang-key="venueAddress2">
+  <a href="https://maps.app.goo.gl/awv3LbPuinCuJjrHA" 
+     target="_blank" 
+     style="color: var(--c-accent); text-decoration: none; font-weight: 700;">
+    Our Residence, Vill. Jalalpur Kalan, Jind
+  </a>
+</span>
+
           </div>
           <div class="event-countdown" id="countdown-sangeet">
             <div class="countdown-item"><span id="days-sangeet">00</span><div data-lang-key="cdDays">Days</div></div>
@@ -749,7 +872,13 @@
           </p>
           <div class="venue">
             <strong data-lang-key="venue">Venue:</strong>
-            <span data-lang-key="venueAddress2">Vill. Jalalpur Kalan, Jind</span>
+            <a href="https://maps.app.goo.gl/awv3LbPuinCuJjrHA" 
+     target="_blank" 
+     style="color: var(--c-accent); text-decoration: none; font-weight: 700;">
+    Our Residence, Vill. Jalalpur Kalan, Jind
+  </a>
+</span>
+
           </div>
           <div class="event-countdown" id="countdown-ghurchadi">
             <div class="countdown-item"><span id="days-ghurchadi">00</span><div data-lang-key="cdDays">Days</div></div>
@@ -782,7 +911,7 @@
     
     <section class="section" id="rsvp">
         <div class="container">
-            <h2 class="section-title" data-lang-key="rsvpTitle">Venue & RSVP</h2>
+            <h2 class="section-title" data-lang-key="rsvpTitle">Venue</h2>
             <p class="section-subtitle" data-lang-key="rsvpSubtitle">We would be delighted to have you with us.</p>
             
             <div class="venue-rsvp-grid">
@@ -800,7 +929,6 @@
                     
                     <div class="contact-card">
                         <p data-lang-key="rsvpNote">Your presence is our gift! Please let us know if you'll be able to join the celebration.</p>
-                        <a href="#rsvp" class="btn" style="margin-bottom: 20px;" data-lang-key="rsvpButton">RSVP Now</a>
                         <strong data-lang-key="rsvpRegards">With regards from the Jaglan Family</strong>
                         <hr style="border:0; border-top: 1px solid #eee; margin: 15px 0;">
                         <strong><span data-lang-key="contact">Contact</span> (Ashok Jaglan / Jagdish Jaglan):</strong>
@@ -859,11 +987,11 @@
         "ghurchadiTitle": "Ghurchadi & Baraat",
         "ghurchadiDate": "Thursday, 27th Nov 2025 • 4:00 PM Onwards",
         "ghurchadiDesc": "The <strong>Ghurchadi</strong> ceremony will take place at our residence, followed by the departure of the <strong>Baraat</strong> (Wedding Procession) at 6:00 PM.",
-        "venueAddress2": "Vill. Jalalpur Kalan, Jind",
+        "venueAddress2": "Our Residence, Vill. Jalalpur Kalan, Jind",
         "weddingTitle": "Wedding Ceremony & Dinner",
         "weddingDateText": "Thursday, 27th Nov 2025 • 7:00 PM Onwards",
         "weddingDesc": "The main wedding ceremony, followed by a celebratory dinner. We eagerly await your presence and blessings.",
-        "rsvpTitle": "Venue & RSVP",
+        "rsvpTitle": "Venue",
         "rsvpSubtitle": "We would be delighted to have you with us.",
         "venueName": "Hotel Star Wing",
         "venueAddressFull": "Near Saraswati School & Rathi Petrol Pump, New Hansi Road, Jind",
@@ -907,11 +1035,11 @@
         "ghurchadiTitle": "घुड़चढ़ी और बारात",
         "ghurchadiDate": "गुरुवार, २७ नवंबर २०२५ • शाम ४:०० बजे से",
         "ghurchadiDesc": "<strong>घुड़चढ़ी</strong> समारोह हमारे निवास पर होगा, जिसके बाद शाम 6:00 बजे <strong>बारात</strong> (शादी का जुलूस) प्रस्थान करेगी।",
-        "venueAddress2": "गाँव जलालपुर कलां, जींद",
+        "venueAddress2": "हमारा निवास, गाँव जलालपुर कलां, जींद",
         "weddingTitle": "विवाह समारोह और रात्रिभोज",
         "weddingDateText": "गुरुवार, २७ नवंबर २०२५ • शाम ७:०० बजे से",
         "weddingDesc": "मुख्य विवाह समारोह, और उसके बाद एक जश्न का रात्रिभोज। हम आपकी उपस्थिति और आशीर्वाद का बेसब्री से इंतजार कर रहे हैं।",
-        "rsvpTitle": "स्थान और RSVP",
+        "rsvpTitle": "स्थान",
         "rsvpSubtitle": "हमें आपको अपने साथ पाकर खुशी होगी।",
         "venueName": "होटल स्टार विंग",
         "venueAddressFull": "सरस्वती स्कूल और राठी पेट्रोल पंप के पास, न्यू हांसी रोड, जींद",
@@ -1037,32 +1165,70 @@
       }
       
       // --- Scrollytelling Logic ---
+      // --- START: CORRECTED Scrollytelling Logic ---
+      // PASTE THIS over your old initializeScrollytelling function
+      // --- START: NEW Scrollytelling Logic (Fade-in-Place) ---
+      // PASTE THIS over your old initializeScrollytelling function
+      // --- START: FINAL Scrollytelling Logic (Handles Desktop AND Mobile) ---
+      // PASTE THIS over your old initializeScrollytelling function
       function initializeScrollytelling() {
         const eventSteps = document.querySelectorAll('.event-step');
         const visualPanels = document.querySelectorAll('.visual-panel');
+        const visualsContainer = document.querySelector('.events-sticky-visuals');
         
-        if (window.innerWidth <= 900) {
-            visualPanels.forEach(panel => panel.classList.add('active'));
-            eventSteps.forEach(step => step.classList.add('is-active-step'));
-            return;
-        }
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            const eventType = entry.target.getAttribute('data-event');
-            const activePanel = document.querySelector(`.visual-panel[data-visual="${eventType}"]`);
+        if (!eventSteps.length || !visualPanels.length || !visualsContainer) return;
 
-            if (entry.isIntersecting) {
-              visualPanels.forEach(panel => panel.classList.remove('active'));
-              if (activePanel) activePanel.classList.add('active');
-              eventSteps.forEach(step => step.classList.remove('is-active-step'));
-              entry.target.classList.add('is-active-step');
-            }
-          });
-        }, { threshold: 0.5 });
-        
-        eventSteps.forEach(step => observer.observe(step));
+        const isMobile = window.innerWidth <= 900;
+
+        if (isMobile) {
+  const mobileObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const eventType = entry.target.getAttribute('data-event');
+      const activePanel = document.querySelector(`.visual-panel[data-visual="${eventType}"]`);
+
+      if (entry.isIntersecting) {
+        // Step entering: show image + text, blur container slightly
+        visualPanels.forEach(panel => panel.classList.remove('active'));
+        if (activePanel) activePanel.classList.add('active');
+        eventSteps.forEach(step => step.classList.remove('is-active-step'));
+        entry.target.classList.add('is-active-step');
+        visualsContainer.classList.add('is-blurred');
+      } else {
+        // Step leaving: fade out text and image smoothly
+        entry.target.classList.remove('is-active-step');
+        visualsContainer.classList.remove('is-blurred');
       }
+    });
+  }, { threshold: 0.35 }); // triggers earlier for smoother sync
+
+  eventSteps.forEach(step => mobileObserver.observe(step));
+}else {
+          // --- DESKTOP LOGIC (Side-by-Side) ---
+          const desktopObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              const eventType = entry.target.getAttribute('data-event');
+              const activePanel = document.querySelector(`.visual-panel[data-visual="${eventType}"]`);
+
+              if (entry.isIntersecting) {
+                // 1. Swap image
+                visualPanels.forEach(panel => panel.classList.remove('active'));
+                if (activePanel) activePanel.classList.add('active');
+                
+                // 2. Highlight text block
+                eventSteps.forEach(step => step.classList.remove('is-active-step'));
+                entry.target.classList.add('is-active-step');
+              }
+            });
+          }, { 
+            threshold: 0.5 // Trigger at 50% of the text block
+          });
+          
+          eventSteps.forEach(step => desktopObserver.observe(step));
+        }
+      }
+      // --- END: FINAL Scrollytelling Logic ---
+      // --- END: NEW Scrollytelling Logic ---
+      // --- END: CORRECTED Scrollytelling Logic ---
 
       // --- Section Fade-in on Scroll ---
       function initializeSectionObserver() {
